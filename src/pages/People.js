@@ -1,14 +1,16 @@
+import { configure } from '@testing-library/react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function People(props) {
 const [ people, setPeople ] = useState([])
-const [newForm, setNewForm ] = useState({
+const [ newForm, setNewForm ] = useState({
     name: '',
     image: '',
     title: '',
 })
 
-const BASE_URL = "https://mern-express-backend-people.herokuapp.com/";
+let BASE_URL = process.env.REACT_APP_MONGODB_URI;
 
 const getPeople = async () => {
     try {
@@ -22,6 +24,8 @@ const getPeople = async () => {
 }
 
 useEffect(()=>{getPeople()}, [])
+
+//useEffect(()=>{console.log(people)},[people])
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,13 +44,13 @@ const handleChange = (e) => {
 const createPeople = async (personData) => {
     try{
     const newPerson = await fetch(BASE_URL + 'people',{
-        method: 'post',
+        method: 'POST',
         headers:{
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(personData)
+        body: JSON.stringify(newForm)
     });
-
+    
     getPeople();
     }
     catch(err){
@@ -86,11 +90,17 @@ const loaded = () => {
     }
     const peopleList = people.map((person, index) => {
       return (
-            <div key={person._id} className='person-item'>
+        <Link 
+            key={ index }
+            className='person-item' 
+            style={{textDecoration: 'none'}} 
+            to={`/people/${ person._id}`}>
+            <div key={person._id}>
               <h1>{person.name}</h1>
               <img src={person.image} alt={ person.name } />
               <h3>{person.title}</h3>
             </div>
+        </Link>
       );
     });
     return(

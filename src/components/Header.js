@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Header(props) {
   return (
-    <header style={{height: "180px", overflow: "hidden"}}>
+    <header style={{height: "300px", overflow: "hidden"}}>
         <nav className='nav'>
             <Link to="/">
                 <img 
