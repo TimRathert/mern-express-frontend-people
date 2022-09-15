@@ -7,7 +7,7 @@ import FishShow from '../pages/FishShow';
 
 function Main() {
   return (
-    <div>
+    <div className='main'>
         <Routes>
             <Route path="/" element={ <Home />} />
             <Route path="/people/" element={ <People />} />

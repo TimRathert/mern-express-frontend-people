@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100vw;
 }
 
 *{
@@ -21,9 +22,18 @@
 .nav img {width: 45px; height: auto;}
 
 .people-list{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
+  display: flex;
   gap: 60px;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+.person-item{
+  width: 33%;
+}
+.person-item img {
+  max-width: 150px;
 }
 
 .spinner {
