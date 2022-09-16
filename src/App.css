@@ -31,11 +31,19 @@
 }
 .person-item{
   width: 33%;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 .person-item img {
   max-width: 150px;
+  
 }
-
+.thisPerson{
+  margin-top: 60px;
+}
+.thisPerson img {
+  max-width: 150px;
+}
 .spinner {
 width: 24px;
 animation: loading infinite 3s linear;
