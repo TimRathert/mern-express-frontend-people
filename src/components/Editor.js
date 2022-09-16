@@ -12,25 +12,19 @@ function Editor(props) {
             body: JSON.stringify(props.editForm)
         }
         const url = `${props.BASE_URL}people/${id}`
-        console.log(props.editForm)
+        console.log(JSON.stringify(props.editForm))
+
         try{
             const response =  await fetch(url, options)
-            // const updatedPerson = await response.json()
+            const updatedPerson = await response.json()
 
-            // props.setThisPerson(updatedPerson)
-            // props.setEditFormat(updatedPerson)
+            props.setThisPerson(updatedPerson)
+            props.setEditFormat(updatedPerson)
 
         }
         catch(err) {
             console.log(err)
         }
-        
-       /*  props.setEditorOpen(!prevState)
-        props.setEditForm({
-            name: props.thisPerson.name,
-            image: props.thisPerson.image,
-            title: props.thisPerson.title,
-        }) */
     }
     
     const handleChange = (e) => {
